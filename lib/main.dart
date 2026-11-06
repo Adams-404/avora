@@ -10,7 +10,7 @@ class AvoraApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const seedColor = Color(0xFF6D5CE7);
+    const seedColor = Color(0xFF626262);
 
     return MaterialApp(
       title: 'AVORA',
