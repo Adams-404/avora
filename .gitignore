@@ -7,7 +7,6 @@ build/
 coverage/
 .flutter-plugins
 .flutter-plugins-dependencies
-.metadata
 
 # IDEs
 .idea/
@@ -19,9 +18,9 @@ coverage/
 /android/key.properties
 /android/.gradle/
 /android/captures/
-/android/gradlew
-/android/gradlew.bat
-/android/gradle/wrapper/gradle-wrapper.jar
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
 
 # iOS
 /ios/Flutter/.last_build_id
