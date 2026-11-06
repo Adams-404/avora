@@ -16,13 +16,34 @@ class _MemoryThemeStore implements ThemePreferenceStore {
 }
 
 void main() {
-  testWidgets('renders the AVORA foundation screen', (tester) async {
+  testWidgets('renders the AVORA home destination', (tester) async {
     final controller = ThemeController(store: _MemoryThemeStore());
 
     await tester.pumpWidget(AvoraApp(themeController: controller));
 
-    expect(find.text('AVORA'), findsOneWidget);
-    expect(find.text('A quieter space for music.'), findsOneWidget);
+    expect(find.text('Find your next favourite.'), findsOneWidget);
+    expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.text('Home'), findsOneWidget);
+  });
+
+  testWidgets('navigates between Home, Search and Library', (tester) async {
+    final controller = ThemeController(store: _MemoryThemeStore());
+
+    await tester.pumpWidget(AvoraApp(themeController: controller));
+
+    await tester.tap(find.text('Search').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Search across the music catalogue. Search becomes '
+        'available when the catalogue connection is added.'), findsOneWidget);
+
+    await tester.tap(find.text('Library').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Your saved tracks and playlists will be collected '
+        'here.'), findsOneWidget);
+
+    await tester.tap(find.text('Home').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Find your next favourite.'), findsOneWidget);
   });
 
   testWidgets('switches to the AMOLED palette when selected', (tester) async {
