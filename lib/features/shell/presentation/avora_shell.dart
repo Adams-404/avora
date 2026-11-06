@@ -95,8 +95,7 @@ class _AvoraShellState extends State<AvoraShell> {
                         children: pages,
                       ),
                     ),
-                    if (widget.miniPlayer case final player?)
-                      player,
+                    if (widget.miniPlayer case final player?) player,
                   ],
                 ),
               ),
