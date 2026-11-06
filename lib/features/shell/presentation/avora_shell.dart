@@ -28,6 +28,7 @@ class _AvoraShellState extends State<AvoraShell> {
   @override
   Widget build(BuildContext context) {
     final isWide = MediaQuery.sizeOf(context).width >= 720;
+    final miniPlayer = widget.miniPlayer;
     final destinations = <NavigationDestination>[
       const NavigationDestination(
         icon: Icon(Icons.home_outlined),
@@ -95,7 +96,7 @@ class _AvoraShellState extends State<AvoraShell> {
                         children: pages,
                       ),
                     ),
-                    if (widget.miniPlayer case final player?) player,
+                    if (miniPlayer != null) miniPlayer,
                   ],
                 ),
               ),
