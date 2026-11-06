@@ -33,11 +33,17 @@ void main() {
 
     await tester.tap(find.text('Search').last);
     await tester.pumpAndSettle();
-    expect(find.textContaining('Search across the music catalogue'), findsOneWidget);
+    final searchDescription = find.textContaining(
+      'Search across the music catalogue',
+    );
+    expect(searchDescription, findsOneWidget);
 
     await tester.tap(find.text('Library').last);
     await tester.pumpAndSettle();
-    expect(find.textContaining('Your saved tracks and playlists'), findsOneWidget);
+    final libraryDescription = find.textContaining(
+      'Your saved tracks and playlists',
+    );
+    expect(libraryDescription, findsOneWidget);
 
     await tester.tap(find.text('Home').last);
     await tester.pumpAndSettle();
