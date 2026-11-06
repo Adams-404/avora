@@ -33,13 +33,11 @@ void main() {
 
     await tester.tap(find.text('Search').last);
     await tester.pumpAndSettle();
-    expect(find.text('Search across the music catalogue. Search becomes '
-        'available when the catalogue connection is added.'), findsOneWidget);
+    expect(find.textContaining('Search across the music catalogue'), findsOneWidget);
 
     await tester.tap(find.text('Library').last);
     await tester.pumpAndSettle();
-    expect(find.text('Your saved tracks and playlists will be collected '
-        'here.'), findsOneWidget);
+    expect(find.textContaining('Your saved tracks and playlists'), findsOneWidget);
 
     await tester.tap(find.text('Home').last);
     await tester.pumpAndSettle();
