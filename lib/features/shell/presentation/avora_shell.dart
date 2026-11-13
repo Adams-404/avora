@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/theme/avora_spacing.dart';
+import '../../../features/home/presentation/home_screen.dart';
+import '../../../features/library/presentation/library_screen.dart';
+import '../../../features/search/presentation/search_screen.dart';
 
 enum AvoraDestination { home, search, library }
 
@@ -46,10 +48,10 @@ class _AvoraShellState extends State<AvoraShell> {
       ),
     ];
 
-    final pages = const <Widget>[
-      _HomeScreen(),
-      _SearchScreen(),
-      _LibraryScreen(),
+    const pages = <Widget>[
+      HomeScreen(),
+      SearchScreen(),
+      LibraryScreen(),
     ];
 
     return PopScope(
@@ -113,114 +115,6 @@ class _AvoraShellState extends State<AvoraShell> {
                 destinations: destinations,
               ),
       ),
-    );
-  }
-}
-
-class _HomeScreen extends StatelessWidget {
-  const _HomeScreen();
-
-  @override
-  Widget build(BuildContext context) {
-    return const _DestinationPage(
-      eyebrow: 'AVORA',
-      title: 'Find your next favourite.',
-      description:
-          'A quieter space for music. Your discovery feed will live here.',
-    );
-  }
-}
-
-class _SearchScreen extends StatelessWidget {
-  const _SearchScreen();
-
-  @override
-  Widget build(BuildContext context) {
-    return const _DestinationPage(
-      eyebrow: 'EXPLORE',
-      title: 'Search',
-      description:
-          'Search across the music catalogue. Search becomes available when the catalogue connection is added.',
-    );
-  }
-}
-
-class _LibraryScreen extends StatelessWidget {
-  const _LibraryScreen();
-
-  @override
-  Widget build(BuildContext context) {
-    return const _DestinationPage(
-      eyebrow: 'YOUR MUSIC',
-      title: 'Library',
-      description:
-          'Your saved tracks and playlists will be collected here.',
-    );
-  }
-}
-
-class _DestinationPage extends StatelessWidget {
-  const _DestinationPage({
-    required this.eyebrow,
-    required this.title,
-    required this.description,
-  });
-
-  final String eyebrow;
-  final String title;
-  final String description;
-
-  @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final horizontalPadding =
-            constraints.maxWidth >= 720 ? 48.0 : AvoraSpacing.lg;
-        return SingleChildScrollView(
-          padding: EdgeInsets.fromLTRB(
-            horizontalPadding,
-            AvoraSpacing.xl,
-            horizontalPadding,
-            AvoraSpacing.xxl,
-          ),
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 920),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  eyebrow,
-                  style: textTheme.labelMedium?.copyWith(
-                    letterSpacing: 2.2,
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                  ),
-                ),
-                const SizedBox(height: AvoraSpacing.md),
-                Text(
-                  title,
-                  style: textTheme.headlineLarge?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -1.1,
-                  ),
-                ),
-                const SizedBox(height: AvoraSpacing.sm),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 480),
-                  child: Text(
-                    description,
-                    style: textTheme.bodyLarge?.copyWith(
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                      height: 1.5,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        );
-      },
     );
   }
 }
