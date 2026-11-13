@@ -6,7 +6,13 @@ The product and engineering direction is documented in [the product specificatio
 
 ## Project status
 
-Early foundation work. The repository currently contains the initial Flutter application source; Android/iOS platform scaffolding and feature implementation are being developed incrementally. Do not treat the current shell as a finished MVP.
+Stage 1 of the roadmap: a navigable app shell. The theme system (light, dark,
+AMOLED, system, persisted locally), responsive navigation for narrow and wide
+windows, page chrome, and honest empty states are in place.
+
+Not implemented yet: any music provider, playback, library storage or search.
+Screens state this rather than showing sample content, so do not treat the
+current shell as a finished MVP.
 
 ## Prerequisites
 
@@ -16,7 +22,6 @@ Early foundation work. The repository currently contains the initial Flutter app
 ## Setup
 
 ```bash
-flutter create . --platforms=android,ios
 flutter pub get
 flutter analyze
 flutter test
@@ -24,6 +29,19 @@ flutter run
 ```
 
 If platform folders already exist, inspect them before regenerating. Never overwrite signing configuration or local Android SDK settings.
+
+## Previewing in a browser
+
+The `web/` target exists for fast UI review while Android work continues:
+
+```bash
+flutter run -d chrome
+```
+
+To use a specific Chromium browser, point `CHROME_EXECUTABLE` at it, for
+example `CHROME_EXECUTABLE=/usr/bin/brave-browser flutter run -d chrome`.
+Use `flutter run -d web-server --web-port=8080` when a window should not be
+launched automatically. Browser playback is not a supported product target.
 
 ## Product principles
 
