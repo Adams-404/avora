@@ -58,6 +58,7 @@ abstract final class AvoraTheme {
       onError: Colors.white,
       surface: surface,
       onSurface: foreground,
+      onSurfaceVariant: muted,
       surfaceContainerLowest: background,
       surfaceContainerLow: background,
       surfaceContainer: surface,
